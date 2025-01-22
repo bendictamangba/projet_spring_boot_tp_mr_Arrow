@@ -1,0 +1,172 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: entete">
+  <style>
+  
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 shadow">
+  <div class="container">
+    <!-- Logo ou titre -->
+    <a class="navbar-brand fw-bold text-uppercase" href="#">
+      <i class="fas fa-hotel"></i> Réservations MYB
+    </a>
+    <!-- Bouton burger pour les écrans petits -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Liens de navigation -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active text-uppercase fw-bold" href="#">
+            <i class="fas fa-home"></i> Accueil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase fw-bold" href="#services">
+            <i class="fas fa-concierge-bell"></i> Services
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase fw-bold" href="#about">
+            <i class="fas fa-info-circle"></i> À propos
+          </a>
+        </li>
+        <li class="nav-item">
+          <!-- Utilisation d'un modal pour afficher le numéro -->
+          <a
+            class="nav-link text-uppercase fw-bold"
+            href="#"
+            data-bs-toggle="modal"
+            data-bs-target="#contactModal"
+          >
+            <i class="fas fa-phone-alt"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<style>
+  .navbar {
+    background: linear-gradient(90deg, #FFA500, #FF6347);
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    color: white !important;
+  }
+
+  .navbar-nav .nav-link {
+    color: white !important;
+    transition: 0.3s;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #FFD700 !important;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+
+  .modal-content {
+    border-radius: 15px;
+  }
+
+  .modal-header {
+    border-bottom: none;
+  }
+
+  .modal-footer {
+    border-top: none;
+  }
+
+  .btn-close-white {
+    filter: invert(1);
+  }
+   body {
+    background-image: url('/images/ch3.jpg');
+    background-size: cover; /* Pour que l'image couvre tout l'écran */
+    background-position: center; /* Pour centrer l'image */
+    background-repeat: no-repeat; /* Pour éviter que l'image se répète */
+}
+
+
+ 
+</style>
+
+  <!-- Contenu principal -->
+  <main class="container mt-5">
+    <!-- Section des chambres -->
+    <section id="services">
+     <h2 class="section-title text-center">Nos chambres</h2>
+
+      <div class="row">
+        <div th:each="service : ${hotelServices}" class="col-md-6 col-lg-4 mb-4">
+          <div class="card">
+            <img th:src="@{/uploads/{imagePath}(imagePath=${service.imagePath})}" class="card-img-top" alt="Image du service">
+            <div class="card-body">
+              <h5 class="card-title" th:text="${service.name}">Nom de l'Hôtel</h5>
+              <span class="badge bg-success" th:if="${service.isAvailable}">Disponible</span>
+              <p>
+                <strong>Prix :</strong> <span th:text="${service.price}">100.00</span> FCFA
+              </p>
+              <a th:href="@{/reservationss/addreservation(serviceId=${service.id})}" class="btn btn-primary w-100">Réserver</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section des restaurants -->
+    <section id="restaurants" class="mt-5">
+      <h2 class="section-title text-center">Nos tables</h2>
+      <div class="row">
+        <div th:each="service : ${restaurantServices}" class="col-md-6 col-lg-4 mb-4">
+          <div class="card">
+            <img th:src="@{/uploads/{imagePath}(imagePath=${service.imagePath})}" class="card-img-top" alt="Image du service">
+            <div class="card-body">
+              <h5 class="card-title" th:text="${service.name}">Nom du Restaurant</h5>
+              <span class="badge bg-success" th:if="${service.isAvailable}">Disponible</span>
+              <p>
+                <strong>Prix :</strong> <span th:text="${service.price}">50.00</span> FCFA
+              </p>
+              <a th:href="@{/reservationss/addreservation(serviceId=${service.id})}" class="btn btn-primary w-100">Réserver</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p>&copy; 2025 MYB. Tous droits réservés.</p>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </footer>
+  </main>
+
+  
+</body>
+
+</html>
+ 

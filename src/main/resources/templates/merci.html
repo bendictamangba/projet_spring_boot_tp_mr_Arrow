@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de Réservation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .message-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-container h1 {
+            color: #FFA500; /* Couleur orange */
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .message-container p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .btn-home {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #FFA500; /* Couleur orange */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-home:hover {
+            background-color: #FF8C00; /* Couleur orange plus foncée au survol */
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        <h1>Votre réservation a bien été prise en compte</h1>
+        <p>Merci de votre confiance. Vous recevrez un e-mail de confirmation sous peu.</p>
+        <button class="btn-home" onclick="window.location.href='/'">Retour à l'accueil</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base ::entete"></head>
+<body class="g-sidenav-show bg-gray-100">
+    
+    <main >
+       
+
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 col-sm-12 mx-auto">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h4 class="font-weight-bolder mb-0">Faire une reservation</h4>
+                        </div>
+                        <div class="card-body">
+
+					
+					<form th:action="@{/reservationss/addreservation(service_id=${serviceId}, user_id=${userId})}" method="POST" enctype="multipart/form-data">
+					    <!-- <!-- Amount 
+					    <div class="form-group mb-3">
+					        <label for="amount" class="form-label">Montant</label>
+					        <input type="number" class="form-control border-radius-md" id="amount" name="amount" placeholder="Entrez le montant" required>
+					    </div>
+					
+					    Number of Users
+					    <div class="form-group mb-3">
+					        <label for="numberOfUsers" class="form-label">Nombre d'utilisateurs</label>
+					        <input type="number" class="form-control border-radius-md" id="numberOfUsers" name="number_of_users" placeholder="Nombre d'utilisateurs" required>
+					    </div>
+					
+					    Payment Date
+					    <div class="form-group mb-3">
+					        <label for="payementDate" class="form-label">Date de Paiement</label>
+					        <input type="date" class="form-control border-radius-md" id="payementDate" name="payement_date" required>
+					    </div>
+					
+					    Payment Method
+					    <div class="form-group mb-3">
+					        <label for="payementMethod" class="form-label">Méthode de Paiement</label>
+					        <select class="form-control border-radius-md" id="payementMethod" name="payement_method" required>
+					            <option value="" disabled selected>--Choisissez une méthode de paiement--</option>
+					            <option value="Carte">Carte</option>
+					            <option value="Virement">Virement</option>
+					            <option value="Espèces">Espèces</option>
+					        </select>
+					    </div>
+					
+					    Status
+					    <div class="form-group mb-3">
+					        <label for="status" class="form-label">Statut</label>
+					        <select class="form-control border-radius-md" id="status" name="status" required>
+					            <option value="Actif" selected>Actif</option>
+					            <option value="Inactif">Inactif</option>
+					        </select>
+					    </div>
+					 -->
+					   <!--  <!-- Service ID 
+					    <div class="form-group mb-3">
+					        <label for="serviceId" class="form-label">ID du Service</label>
+					        <input type="number" class="form-control border-radius-md" id="serviceId" name="serviceId" placeholder="ID du service" required>
+					    </div>
+					
+					    User ID
+					    <div class="form-group mb-3">
+					        <label for="userId" class="form-label">ID de l'Utilisateur</label>
+					        <input type="number" class="form-control border-radius-md" id="userId" name="user_id" placeholder="ID de l'utilisateur" required>
+					    </div>
+					 -->
+					    <!-- Arrival Date -->
+					    <div class="form-group mb-3">
+					        <label for="arrivalDate" class="form-label">Date d'Arrivée</label>
+					        <input type="date" class="form-control border-radius-md" id="arrivalDate" name="arrival_date" required>
+					    </div>
+					
+					
+					    <!-- Departure Date -->
+					    <div class="form-group mb-3">
+					        <label for="departureDate" class="form-label">Date de Départ</label>
+					        <input type="date" class="form-control border-radius-md" id="departureDate" name="departure_date" required>
+					    </div>
+					    
+					    <!-- Champ caché pour la date de réservation -->
+    <input type="hidden" th:value="${reservation.reservation_date}" name="reservation_date" />
+    
+					
+					    <!-- Submit Button -->
+					    <div class="text-center">
+					        <button type="submit" class="btn btn-primary w-100 border-radius-md">Enregistrer</button>
+					    </div>
+					</form>
+              </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div th:replace="base ::messcripts"></div>
+</body>
+</html>
+    					 

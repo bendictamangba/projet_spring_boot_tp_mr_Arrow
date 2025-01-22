@@ -1,0 +1,80 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base ::entete"></head>
+<body class="g-sidenav-show bg-gray-100">
+    <aside th:replace="base ::sidebar" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main"></aside>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true" th:replace="base ::nav"></nav>
+
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 col-sm-12 mx-auto">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h4 class="font-weight-bolder mb-0">Ajouter un Service</h4>
+                        </div>
+                        <div class="card-body">
+
+                            <form th:action="@{/displayfacilities/add}" method="POST" enctype="multipart/form-data">
+                                <!-- Name -->
+                                <div class="form-group mb-3">
+                                    <label for="name" class="form-label">Nom du Service</label>
+                                    <input type="text" class="form-control border-radius-md" id="name" name="name" placeholder="Entrez le nom du service" required>
+                                </div>
+                                
+                                <div class="form-group mb-3">
+                                    <label for="price" class="form-label">Prix du service</label>
+                                    <input type="number" class="form-control border-radius-md" id="name" name="price" placeholder="Entrez le prix du service" required>
+                                </div>
+                                
+                                
+                                
+                                
+                                
+                                <!-- Type -->
+                              <div class="form-group mb-3">
+							    <label for="type" class="form-label">Type de Service</label>
+							    <select class="form-control border-radius-md" id="type" name="type" required>
+							        <option value="" disabled selected>--Choisissez un type de service--</option>
+							        <option value="Hôtel">Hôtel</option>
+							        <option value="Restaurant">Restaurant</option>
+							    </select>
+							</div>
+
+                                <!-- <!-- Capacity 
+                                <div class="form-group mb-3">
+                                    <label for="capacity" class="form-label">Capacité Totale</label>
+                                    <input type="number" class="form-control border-radius-md" id="capacity" name="capacity" placeholder="Capacité totale" >
+                                </div>
+                                Current Occupancy
+                                <div class="form-group mb-3">
+                                    <label for="currentOccupancy" class="form-label">Occupation Actuelle</label>
+                                    <input type="number" class="form-control border-radius-md" id="currentOccupancy" name="currentOccupancy" >
+                                </div> -->
+                                <!-- Availability -->
+                                <div class="form-group mb-3">
+                                    <label for="isAvailable" class="form-label">Disponibilité</label>
+                                    <select class="form-control border-radius-md" id="isAvailable" name="isAvailable" required>
+                                        <option value="Disponible" selected>Disponible</option>
+                                        <option value="Non Disponible">Non Disponible</option>
+                                    </select>
+                                </div>
+                                <!-- Image -->
+                                <div class="form-group mb-3">
+                                    <label for="image" class="form-label">Image du Service</label>
+                                    <input type="file" class="form-control border-radius-md" id="image" name="image" accept="image/*">
+                                </div>
+                                <!-- Submit Button -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary w-100 border-radius-md">Ajouter le Service</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div th:replace="base ::messcripts"></div>
+</body>
+</html>
