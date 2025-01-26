@@ -1,6 +1,5 @@
 package com.tpnoel.reservation.controller;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.tpnoel.reservation.model.User;
+import com.tpnoel.reservation.model.User.Role;
 import com.tpnoel.reservation.repository.UserRepository;
 @Controller
 public class AuthController {
@@ -26,7 +26,7 @@ public class AuthController {
     @GetMapping("/register")
     public String registerUser(Model model)//Le paramètre model est un objet fourni par Spring qui permet de passer des données du contrôleur à la vue.
     {
-    	model.addAttribute("user", new User());//Crée un nouvel objet de type User (probablement une classe définie dans votre application, représentant un utilisateur).
+    	model.addAttribute("user", new User());//Crée un nouvel objet de type User 
     	//Ajoute cet objet au modèle avec le nom "user".
         return "register";     //cela affiche le formulaire de connexion
     }
@@ -35,8 +35,9 @@ public class AuthController {
     @PostMapping("/register")
     public String registerUser(User user) {
     	user.setPassword(passwordEncoder.encode(user.getPassword()));
+    	user.setRole(Role.CLIENT);
     	userRepository.save(user);
-    	return "redirect:/dashboard";
+    	return "redirect:/login";
     }
     
 

@@ -1,10 +1,12 @@
+--
 --INSERT INTO reservationschema.users ( address, email, password, phone_number, role, sex, surname)
 --VALUES
---  ( '123 Rue Principale, Lomé', 'jean.dupont@example.com', 'motdepasse1', '+22890123456', 'client', 'M', 'Dupont'),
---  ( '456 Avenue de la République, Lomé', 'marie.durand@example.com', 'motdepasse2', '+22890765432', 'client', 'F', 'Durand');
+-- ( '123 Rue Principale, Lomé', 'jean.dupont@example.com', 'motdepasse1', '+22890123456', 'CLIENT', 'M', 'Dupont');
+-- 
+--INSERT INTO reservationschema.users ( address, email, password, phone_number, role, sex, surname)
+--VALUES
+--  ( '456 Avenue de la République, Lomé', 'marie.durand@example.com', 'motdepasse2', '+22890765432', 'CLIENT', 'F', 'Durand');
 
---
---
 --INSERT INTO reservationschema.service ( capacity, current_occupancy, image, is_available, name, price, type)
 --VALUES
 --  ( 2, 0, 'image1.jpg', true, 'Chambre Standard', 50000, 'standard'),

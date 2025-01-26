@@ -1,7 +1,6 @@
 package com.tpnoel.reservation.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,19 +18,29 @@ import com.tpnoel.reservation.service.ReservationService;
 import com.tpnoel.reservation.service.ServicesService;
 
 @RestController // Indique que la classe est un composant Spring gérant les requêtes HTTP entrantes
-@RequestMapping("/facilities") // Cette annotation lie les requêtes HTTP à cette classe
+@RequestMapping("/services") // Cette annotation lie les requêtes HTTP à cette classe
 public class ServicesController {
 
+	
     @Autowired
     private ServicesService servicesService;
 
     @Autowired
     private ReservationService reservationService;
-    // Récupérer tous les services (endpoint de base)
-    @GetMapping
-    public List<Services> getAllServices() {
-        return servicesService.getAllServices();
+
+@GetMapping("/all")
+    
+    public List<Services> getAllService() {
+        List<Services> serv = servicesService.findAll();
+        if (serv.isEmpty()) {
+            throw new RuntimeException("Aucun service trouvé.");
+        }
+        return serv;
     }
+   
+    
+    
+    
 
     // Créer un service
     @PostMapping("/reservations") // Permet de créer un service
@@ -55,15 +64,15 @@ public class ServicesController {
     {
         Boolean isAvailableBoolean = null;
 
-        // Vérifiez si isAvailable n'est pas null et n'est pas vide
+       
         if (isAvailable != null && !isAvailable.isEmpty()) {
             isAvailableBoolean = Boolean.valueOf(isAvailable);
         }
 
-        // Si isAvailableBoolean est null, donnez-lui une valeur par défaut
+       
         if (isAvailableBoolean == null) {
             // Par exemple, ici nous retournons tous les services, indépendamment de leur disponibilité
-            isAvailableBoolean = null; // Si vous souhaitez tous les services, laissez-le à null, sinon mettez true ou false
+            isAvailableBoolean = null; 
         }
 
         List<Services> services = reservationService.searchServices(name, type, isAvailableBoolean);

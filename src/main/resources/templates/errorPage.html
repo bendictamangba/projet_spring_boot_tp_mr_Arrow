@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreur</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style type="text/css">
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+h1 {
+    color: #e74c3c;
+}
+
+p {
+    color: #333;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Une erreur est survenue</h1>
+        <p th:text="${error}">Détails de l'erreur ici...</p>
+        <p><a href="/dashboard">Retour à l'accueil</a></p>
+    </div>
+</body>
+</html>

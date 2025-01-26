@@ -14,6 +14,11 @@
                             <h4 class="font-weight-bolder mb-0">Faire une reservation</h4>
                         </div>
                         <div class="card-body">
+<div class="form-group mb-3">
+    <div th:if="${error}" class="alert alert-danger" role="alert">
+        <p th:text="${error}"></p>
+    </div>
+</div>
 
 					
 					<form th:action="@{/reservationss/addreservation(service_id=${serviceId}, user_id=${userId})}" method="POST" enctype="multipart/form-data">

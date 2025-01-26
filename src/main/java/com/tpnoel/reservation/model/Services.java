@@ -2,7 +2,7 @@ package com.tpnoel.reservation.model;
 
 import java.util.List;
 
-import org.antlr.v4.runtime.misc.NotNull;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -16,6 +16,7 @@ import lombok.Data;
 @Entity
 @Table(schema = "reservationschema", name = "service")
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true) 
 public class Services {
 
     @Id

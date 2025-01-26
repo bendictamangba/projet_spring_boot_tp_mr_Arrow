@@ -49,7 +49,5 @@ public class LigneReservation {
 	
 	
 
-    // Getters and Setters
-
 
 }

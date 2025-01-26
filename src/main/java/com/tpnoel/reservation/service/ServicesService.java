@@ -1,10 +1,13 @@
 package com.tpnoel.reservation.service;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.tpnoel.reservation.model.Services;
+import com.tpnoel.reservation.model.User;
 import com.tpnoel.reservation.repository.ServicesRepository;
 
 @Service
@@ -12,6 +15,28 @@ public class ServicesService {
 
     @Autowired
     private ServicesRepository servicesRepository;
+    
+   
+
+	public List<Services> findAll() {
+		return servicesRepository.findAll();
+	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     // Récupérer tous les services
     public List<Services> getAllServices() {

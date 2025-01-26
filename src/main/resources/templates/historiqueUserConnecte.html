@@ -1,0 +1,99 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base ::entete">
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <aside th:replace="base :: sidebar" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main">
+  </aside>
+
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true" th:replace="base :: nav">
+    </nav>
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <h6>Votre Historique</h6>
+             <!--  <a   class="btn btn-info add-new">Faire une reservation</a> -->
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+               <table class="table align-items-center mb-0">
+				  <thead>
+				    <tr>
+				     <!--  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Montant payé</th> -->
+				      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom du service</th>
+				      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom du client</th>
+				      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Numéro du client</th>
+				      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date arrivée</th>
+				      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date départ</th>
+				      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date de réservation</th><!-- 
+				      
+				      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date de payement</th>
+				      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Methode de payement</th> 
+				      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Statut</th>-->
+				      
+				    </tr>
+				  </thead>
+				  <tbody>
+				   <tr th:each="reserv : ${reserva}">
+				     <!--  <td th:text="${reserv.amount}"></td> -->
+				      <td th:text="${reserv.service != null ? reserv.service.name : 'Service inconnu'}"></td>						
+				      <td th:text="${reserv.user != null ? reserv.user.surname : 'Client inconnu'}"></td>
+				      <td th:text="${reserv.user != null ? reserv.user.phoneNumber : 'Numéro du client inconnu'}"></td>
+				      <!-- <td th:text="${reserv.payement_date}"></td> -->
+				     <td th:text="${reserv.arrival_date != null ? reserv.arrival_date : 'Date non définie'}"></td>
+						<td th:text="${reserv.departure_date != null ? reserv.departure_date : '1900-01-01'}"></td>
+						<td th:text="${reserv.reservation_date != null && !reserv.reservation_date.isEmpty() ? reserv.reservation_date : 'Date non définie'}"></td>
+
+						
+				    </tr>
+				  </tbody>
+				</table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div th:replace="base :: messcripts"></div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+          $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+          });
+        </script>
+      </div>
+    </div>
+     <footer>
+      <div class="container text-center">
+        <p>&copy; 2025 MYB. Tous droits réservés.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+        <div class="links mt-3">
+          <a href="#">Politique de confidentialité</a> | 
+          <a href="#">Conditions d'utilisation</a>
+        </div>
+      </div>
+    </footer>                 
+  </main>
+</body>
+</html>

@@ -1,4 +1,6 @@
 package com.tpnoel.reservation.controller;
+import java.util.Arrays;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,11 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
 
 import com.tpnoel.reservation.model.User;
 import  com.tpnoel.reservation.service.UserService;
-
-import jakarta.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/users")
 public class DisplayUserController {
@@ -20,13 +21,37 @@ public class DisplayUserController {
 	@Autowired
 	 private UserService userService;
 	 
+	@Autowired
+    private RestTemplate restTemplate;
+	 
 	
+
+	    
 	@GetMapping ("/allUser")
 	private String listUser(Model model) {
-		model.addAttribute("users", userService.findAll());
-		//model.addAttribute("nom", "toto");
+		model.addAttribute("users", userService.findAll());		
 		return "displayUsers";
  }
+	  
+//	  private final String BASE_URL = "http://localhost:8082/users";
+//
+//
+//	  // Afficher tous les utilisateurs dans une page Thymeleaf
+//	  @GetMapping("/allUser")
+//	  public String getAllUsers(Model model) {
+//	      try {
+//	          User[] users = restTemplate.getForObject(BASE_URL + "/all", User[].class);
+//	          model.addAttribute("users", Arrays.asList(users));
+//	          return "displayUsers"; // Renvoie à la vue Thymeleaf avec la liste des utilisateurs
+//	      } catch (Exception e) {
+//	          model.addAttribute("error", "Erreur lors de la récupération des utilisateurs");
+//	          return "errorPage"; // Affiche une page d'erreur
+//	      }
+//	  }
+
+
+
+	  
  
 @GetMapping("/add")
 public String addUser(Model model) {
@@ -64,34 +89,6 @@ public String editUserForm(@PathVariable Long id, Model
 //}
 // 
 
-
-@PostMapping("/create")
-
-private String CreateUser(HttpServletRequest request) {
-	
-	System.out.print("toto");
-	String address=(String) request.getParameter("address");
-	String email=(String) request.getParameter("email");
-	String password=(String) request.getParameter("password");
-	String phoneNumber=(String) request.getParameter("phoneNumber");
-	String sex=(String) request.getParameter("sex");
-	String role=(String) request.getParameter("role");
-	String surname=(String) request.getParameter("surname");
-	User user= new User();
-	user.setAddress(address);
-	user.setEmail(email);
-	user.setPassword(password);
-	user.setPhoneNumber(phoneNumber);
-	user.setSurname(surname);
-	user.setSex(sex);
-	user.setRole(role);
-	user.setSurname(surname);
-	
-	
-	userService.saveUser(user);
-	return "redirect:/users";
-	
-}
 
 
 }

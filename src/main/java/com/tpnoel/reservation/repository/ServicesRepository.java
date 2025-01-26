@@ -13,12 +13,8 @@ public interface ServicesRepository extends JpaRepository<Services, Long> {
 
     List<Services> findByNameContainingAndTypeContaining(String name, String type);
 
-    // Recherche par nom, type et disponibilité (isAvailable)
- 
-    // List<Services> findByNameContainingAndTypeContainingAndIsAvailable(String name, String type, boolean isAvailable);
-    
+      
     List<Services> findAll();
     List<Services> findByType(String type);
     
-//    Optional<Services> findById(Long id);
 }

@@ -16,19 +16,19 @@ public class HomeController {
 
 @GetMapping("/base") 
     public String homePage(Model model) {
-        return "base"; // home.html
+        return "base"; 
     }
 
 @GetMapping("/res") 
 public String res(Model model) {
-    return "displayReservationHistory"; // home.html
+    return "displayReservationHistory"; 
 }
 
 
 
 @GetMapping("/user") 
     public String user(Model model) {
-        return "users"; // home.html
+        return "users"; 
     }
 @Autowired
 private ServicesService servicesService;
@@ -91,7 +91,7 @@ public String home(Model model) {
         restaurantServices.forEach(service -> System.out.println("Service Restaurant : " + service.getName()));
     }
 
-    return "home"; // Correspond au fichier home.html
+    return "home";
 }
 
 

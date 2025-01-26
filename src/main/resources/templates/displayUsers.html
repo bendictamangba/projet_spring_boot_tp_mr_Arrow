@@ -13,7 +13,7 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Liste des utilisateurs</h6>
+                            <h6>Liste Des Utilisateurs</h6>
                             <a href="/register" class="btn btn-info add-new">Ajouter un utilisateur</a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
@@ -52,11 +52,11 @@
                                             </td>
                                             <td class="align-middle">
                                                 <a th:href="@{/{userId}/history(userId=${user.id})}" class="btn btn-primary btn-sm" title="View History" data-toggle="tooltip">
-                                                    View History
+                                                    Voir Historique
                                                 </a>
-                                                <a th:href="@{/users/edit/{id}(id=${user.id})}" class="btn btn-warning btn-sm" title="Edit" data-toggle="tooltip">
+                                                <!-- <a th:href="@{/users/edit/{id}(id=${user.id})}" class="btn btn-warning btn-sm" title="Edit" data-toggle="tooltip">
                                                     Edit
-                                                </a>
+                                                </a> -->
                                                 <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-danger btn-sm" title="Delete" data-toggle="tooltip">
                                                     Delete
                                                 </a>

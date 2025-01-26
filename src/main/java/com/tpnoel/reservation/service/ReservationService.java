@@ -72,7 +72,5 @@ public class ReservationService {
     public void deleteReservation(Long id) {
 		reservationRepository.deleteById(id);
 	
-}
- // Supprimer un servic
-    
+} 
 }

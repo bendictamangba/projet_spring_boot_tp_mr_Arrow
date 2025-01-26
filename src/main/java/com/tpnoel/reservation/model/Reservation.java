@@ -2,6 +2,8 @@ package com.tpnoel.reservation.model;
 
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.CascadeType;
@@ -41,9 +43,11 @@ public class Reservation {
     private String payement_method;
     private String status;
     private int numberOfUsers;
+    
+    @DateTimeFormat
     private String arrival_date; 
     
-    private String reservation_date;  // Date de réservation
+    private String reservation_date;  
 
     public String getReservation_date() {
         return reservation_date;
@@ -72,7 +76,7 @@ public class Reservation {
 		this.departure_date = departure_date;
 	}
 
-	private String departure_date;  // Date de départ
+	private String departure_date;  
 
     public Long getId() { 
         return id; 

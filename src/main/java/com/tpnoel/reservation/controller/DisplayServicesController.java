@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,26 +17,46 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tpnoel.reservation.model.Services;
+import com.tpnoel.reservation.model.User;
 import com.tpnoel.reservation.repository.ServicesRepository;
 import com.tpnoel.reservation.service.ServicesService;
+
 
 @Controller
 @RequestMapping("/displayfacilities")
 public class DisplayServicesController {
 	
+    @Autowired
+    private RestTemplate restTemplate;
 	 @Autowired
 	 private ServicesService servicesService;
 	 @Autowired
 	  private ServicesRepository servicesRepository;
+//	  private final String BASE_URL = "http://localhost:8082/services";
+
 	 
 	 @GetMapping ("/facilities")
 		private String listService(Model model) {
 			model.addAttribute("facilities", servicesService.getAllServices());
 			return "displayService";
 	 }
+////	 
+//	 private final String BASE_URL = "http://localhost:8082/services";
+//
+//
+//	 @GetMapping("/facilities")
+//	 public String getAllServices(Model model) {
+//	    
+//	         Services[] services = restTemplate.getForObject(BASE_URL + "/all", Services[].class);
+//	         model.addAttribute("services", Arrays.asList(services));
+//	         return "displayServices"; // Renvoie à la vue Thymeleaf avec la liste des services
+//	    
+//	 }
+//	  
 	 
 	 
 	 @GetMapping("/facilitiesfree")
@@ -47,7 +68,7 @@ public class DisplayServicesController {
 	     // Recherche des services disponibles
 	     model.addAttribute("facilities", servicesService.searchServices(name, type, "true"));
 
-	     // Retourner la vue (par exemple "displayFreeService" pour afficher les résultats)
+	     
 	     return "displayFreeService";
 	 }
 
@@ -65,13 +86,13 @@ public class DisplayServicesController {
 //}
 
 	
-
+	
 	@PostMapping("/add")
 	public String saveServices(@ModelAttribute Services services, @RequestParam("image") MultipartFile image) {
 	    // Validation du prix
 	    if (services.getPrice() <= 0) {
 	        // Ajouter une erreur de validation ou afficher un message personnalisé
-	        // Vous pouvez utiliser une exception ou une gestion d'erreur à l'écran
+	        
 	        throw new IllegalArgumentException("Le prix doit être supérieur à 0.");
 	    }
 
@@ -81,14 +102,14 @@ public class DisplayServicesController {
 	        String filePath = saveImage(image);
 	        if (filePath != null) {
 	            // Stocker le chemin de l'image dans l'objet services
-	            services.setImagePath(filePath);  // Utiliser le setter pour stocker le chemin
+	            services.setImagePath(filePath);
 	        }
 	    }
 
-	    // Enregistrer l'objet services dans la base de données
+	    
 	    servicesService.createService(services);
 
-	    // Rediriger vers la page appropriée (par exemple, la liste des services)
+	   
 	    return "redirect:/displayfacilities/facilities";
 	}
 
@@ -96,7 +117,7 @@ public class DisplayServicesController {
 	    try {
 	        // Sauvegarder le fichier avec un nom unique
 	        String fileName = System.currentTimeMillis() + "-" + image.getOriginalFilename();
-	        String uploadDir = "src/main/resources/static/uploads";  // Remplacer par le chemin d'enregistrement réel
+	        String uploadDir = "src/main/resources/static/uploads"; 
 	        Path path = Paths.get(uploadDir, fileName);
 	        Files.copy(image.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 	        return fileName;  // Retourner le nom du fichier enregistré
